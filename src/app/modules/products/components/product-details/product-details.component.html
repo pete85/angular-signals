@@ -1,32 +1,62 @@
-<div class="tw-flex tw-flex-auto tw-flex-col" *ngIf="product">
-  <div class="card-header">
-    {{pageTitle}}
+<div class="tw-flex tw-flex-auto tw-justify-center tw-items-center tw-min-h-[200px]" *ngIf="loadingProduct">
+  <app-loader></app-loader>
+</div>
+
+
+
+<div class="tw-flex tw-flex-auto tw-flex-col" *ngIf="product && !loadingProduct">
+  <div class="tw-flex tw-flex-auto tw-mb-5">
+    <h2>{{ pageTitle }}</h2>
+  </div>
+
+  <div class="tw-flex tw-flex-auto tw-flex-col tw-gap-y-5">
+
+    <!-- *** Product name *** -->
+    <div class="tw-flex tw-flex-auto tw-items-center">
+      <div class="tw-flex-grow-0 tw-w-[120px]">
+        <h4>Name:</h4>
+      </div>
+      <p>{{ product?.productName }}</p>
+    </div>
+
+    <!-- *** Product code *** -->
+    <div class="tw-flex tw-flex-auto tw-items-center">
+      <div class="tw-flex-grow-0 tw-w-[120px]">
+        <h4>Code:</h4>
+      </div>
+      <p>{{ product?.productCode }}</p>
+    </div>
+
+    <!-- *** Product description *** -->
+    <div class="tw-flex tw-flex-auto tw-items-center">
+      <div class="tw-flex-grow-0 tw-w-[120px]">
+        <h4>Description:</h4>
+      </div>
+      <p>{{ product?.description }}</p>
+    </div>
+
+    <!-- *** Product price *** -->
+    <div class="tw-flex tw-flex-auto tw-items-center">
+      <div class="tw-flex-grow-0 tw-w-[120px]">
+        <h4>Price:</h4>
+      </div>
+      <p>{{ product?.price | currency:"GBP":"symbol" }}</p>
+    </div>
+
+    <!-- *** Product quantity *** -->
+    <div class="tw-flex tw-flex-auto tw-items-center">
+      <div class="tw-flex-grow-0 tw-w-[120px]">
+        <h4>In Stock:</h4>
+      </div>
+      <p>{{ product?.quantityInStock ?? 0 }}</p>
+    </div>
+
+    <div class="tw-flex tw-flex-auto tw-items-center tw-gap-3">
+      <button mat-flat-button color="primary" (click)="addToBasket(product)">Add to Basket</button>
+    </div>
   </div>
 
   <div class="card-body">
-
-    <div class="row">
-      <div class="col-md-2">Name:</div>
-      <div class="col-md-6">{{product?.productName}}</div>
-      <div class="col-md-3"><button class='btn btn-primary'
-                                    (click)="addToBasket(product)">Add to Cart</button></div>
-    </div>
-    <div class="row">
-      <div class="col-md-2">Code:</div>
-      <div class="col-md-6">{{product?.productCode}}</div>
-    </div>
-    <div class="row">
-      <div class="col-md-2">Description:</div>
-      <div class="col-md-6">{{product?.description}}</div>
-    </div>
-    <div class="row">
-      <div class="col-md-2">Price:</div>
-      <div class="col-md-6">{{product?.price | currency:"USD":"symbol"}}</div>
-    </div>
-    <div class="row">
-      <div class="col-md-2">In Stock:</div>
-      <div class="col-md-6">{{product?.quantityInStock ?? 0}}</div>
-    </div>
 
     <div class="table-responsive">
       <table class="table mb-0"
@@ -40,7 +70,7 @@
         </thead>
         <tbody>
         <tr *ngFor="let review of product.reviews">
-          <td>{{ review.title }} </td>
+          <td>{{ review.title }}</td>
           <td>{{ review.userName }}</td>
           <td>{{ review.text }}</td>
         </tr>
@@ -60,5 +90,5 @@
   </div>
 </div>
 <div class="alert alert-danger" *ngIf="errorMessage">
-  {{errorMessage}}
+  {{ errorMessage }}
 </div>

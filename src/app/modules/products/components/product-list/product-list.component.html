@@ -1,15 +1,18 @@
 <div class="tw-flex tw-flex-auto tw-flex-col">
-  <div class="tw-flex tw-flex-auto">
+  <div class="tw-flex tw-flex-auto tw-mb-5">
     <h2>{{ pageTitle }}</h2>
   </div>
 
   <div class="tw-flex tw-flex-col tw-gap-2 tw-flex-auto" *ngIf="products.length">
-      <button type='button' mat-flat-button color="primary"
-              *ngFor='let product of products'
-              [ngClass]="{'btn-active': product.id === selectedProductId}"
-              (click)='onSelected(product.id)'>
-        {{ product.productName }}
-      </button>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Select product</mat-label>
+      <mat-select (selectionChange)="onSelected($event.value)" [disabled]="!products">
+        @for (product of products; track product) {
+          <mat-option [value]="product.id">{{product?.productName}}</mat-option>
+        }
+      </mat-select>
+    </mat-form-field>
   </div>
 
   <div class="tw-flex tw-flex-auto" *ngIf="errorMessage">
@@ -17,7 +20,9 @@
   </div>
 
 
-  <div class='col-md-8'>
-    <app-product-details [productId]="selectedProductId"/>
-  </div>
+  @if (selectedProductId) {
+    <div class='col-md-8'>
+      <app-product-details [productId]="selectedProductId"/>
+    </div>
+  }
 </div>

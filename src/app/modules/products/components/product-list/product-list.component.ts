@@ -5,6 +5,11 @@ import {NgClass, NgForOf, NgIf} from "@angular/common";
 import {Subscription} from "rxjs";
 import {ProductsService} from "../../../../services/products/products.service";
 import {MatButton} from "@angular/material/button";
+import {MatFormField, MatLabel} from "@angular/material/form-field";
+import {ReactiveFormsModule} from "@angular/forms";
+import {MatAutocomplete, MatAutocompleteTrigger, MatOption} from "@angular/material/autocomplete";
+import {MatInput} from "@angular/material/input";
+import {MatSelect} from "@angular/material/select";
 
 @Component({
   selector: 'app-product-list',
@@ -14,7 +19,15 @@ import {MatButton} from "@angular/material/button";
     NgClass,
     NgIf,
     NgForOf,
-    MatButton
+    MatButton,
+    MatFormField,
+    ReactiveFormsModule,
+    MatAutocompleteTrigger,
+    MatAutocomplete,
+    MatOption,
+    MatInput,
+    MatLabel,
+    MatSelect
   ],
   templateUrl: './product-list.component.html',
   styleUrl: './product-list.component.scss'
@@ -33,7 +46,6 @@ export class ProductListComponent implements OnInit, OnDestroy {
   ngOnInit() {
     this.pageTitle = 'Products';
     this.products = [];
-    this.selectedProductId = 0;
     this.getProducts();
   }
 
