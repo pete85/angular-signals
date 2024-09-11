@@ -1,3 +1,42 @@
+<mat-toolbar color="primary">
+  <button mat-icon-button aria-label="Menu icon">
+    <mat-icon>menu</mat-icon>
+  </button>
+  <h1>Responsive Material Sidenavigation</h1>
+</mat-toolbar>
+
+<mat-sidenav-container autosize>
+  <mat-sidenav [opened]="true" mode="side">
+    <mat-nav-list>
+      <a mat-list-item [routerLink]="['/']">
+        <span class="entry">
+          <mat-icon>house</mat-icon>
+          <span>Home</span>
+        </span>
+      </a>
+
+      <a mat-list-item [routerLink]="['/products']">
+        <span class="entry">
+          <mat-icon>category</mat-icon>
+          <span>Products</span>
+        </span>
+      </a>
+
+      <a mat-list-item [routerLink]="['/cart']">
+        <span class="entry">
+          <mat-icon>shopping_basket</mat-icon>
+          <span>Dashboard</span>
+        </span>
+      </a>
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <h2>Content</h2>
+    <router-outlet></router-outlet>
+  </mat-sidenav-content>
+</mat-sidenav-container>
+
+
 <nav class="navbar navbar-expand navbar-light bg-light">
   <a class="navbar-brand">{{pageTitle}}</a>
   <ul class="navbar-nav">
@@ -20,7 +59,3 @@
     </li>
   </ul>
 </nav>
-
-<div class="container">
-  <router-outlet></router-outlet>
-</div>
