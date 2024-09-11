@@ -2,7 +2,7 @@
   <button mat-icon-button aria-label="Menu icon">
     <mat-icon>menu</mat-icon>
   </button>
-  <h1>Angular with Signals - demo</h1>
+  <h2>Angular with Signals - demo</h2>
 </mat-toolbar>
 
 <mat-sidenav-container autosize>
@@ -31,31 +31,8 @@
     </mat-nav-list>
   </mat-sidenav>
   <mat-sidenav-content>
-    <h2>Content</h2>
-    <router-outlet></router-outlet>
+    <div class="tw-p-5">
+      <router-outlet></router-outlet>
+    </div>
   </mat-sidenav-content>
 </mat-sidenav-container>
-
-
-<nav class="navbar navbar-expand navbar-light bg-light">
-  <a class="navbar-brand">{{pageTitle}}</a>
-  <ul class="navbar-nav">
-    <li class="nav-item">
-      <a class="nav-link"
-         [routerLink]="['/']"
-         routerLinkActive="active">Home</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link"
-         [routerLink]="['/products']"
-         routerLinkActive="active">Product List</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link"
-         [routerLink]="['/basket']"
-         routerLinkActive="active">Cart
-        <span class="badge bg-primary">{{cartCount > 0 ? cartCount : ''}}</span>
-      </a>
-    </li>
-  </ul>
-</nav>

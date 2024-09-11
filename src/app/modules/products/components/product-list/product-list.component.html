@@ -1,1 +1,31 @@
-<p>product-list works!</p>
+<div class="tw-flex tw-flex-auto tw-flex-col">
+  <div class='col-md-4'>
+
+    <div class="card">
+      <div class="card-header">
+        <h2>{{pageTitle}}</h2>
+      </div>
+
+      <div class='card-body'
+           *ngIf="products.length">
+        <div class='list-group'>
+          <button type='button'
+                  class='list-group-item'
+                  *ngFor='let product of products'
+                  [ngClass]="{'active': product.id === selectedProductId}"
+                  (click)='onSelected(product.id)'>
+            {{ product.productName }}
+          </button>
+        </div>
+      </div>
+    </div>
+    <div class="alert alert-danger"
+         *ngIf="errorMessage">
+      {{errorMessage}}
+    </div>
+  </div>
+
+  <div class='col-md-8'>
+    <app-product-details [productId]="selectedProductId"/>
+  </div>
+</div>
