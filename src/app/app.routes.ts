@@ -9,7 +9,7 @@ export const routes: Routes = [
     loadComponent: () => import('./modules/products/components/product-list/product-list.component').then(c => c.ProductListComponent)
   },
   {
-    path: 'cart',
-    loadComponent: () => import('./modules/cart/components/cart-shell/cart-shell.component').then(c => c.CartShellComponent)
+    path: 'basket',
+    loadComponent: () => import('./modules/basket/components/basket-shell/basket-shell.component').then(c => c.BasketShellComponent)
   },
   { path: '**', component: PageNotFoundComponent }];

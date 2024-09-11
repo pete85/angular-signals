@@ -1,13 +1,32 @@
+@import "mixins";
+@import "variables";
+
 h1 {
-  padding: 0 1rem;
+  font: 3rem/3rem 'Bebas Neue', Helvetica Neue, sans-serif !important;
 }
 
-h2 {padding: 1rem;}
+h2 {
+  font: 2rem/2rem 'Bebas Neue', Helvetica Neue, sans-serif;
+}
+
+h3 {
+  font: 1.5rem/1.5rem 'Bebas Neue', Helvetica Neue, sans-serif;
+}
+
+h4 {
+  font: 600 1rem/1.2rem 'Montserrat', Helvetica Neue, sans-serif;
+}
+
+p {
+  font: 400 1rem/1.2rem 'Montserrat', Helvetica Neue, sans-serif;
+  margin: 0;
+}
 
 mat-toolbar{
   position:fixed;
   top:0;
   z-index: 2;
+  background-color: theme('colors.slate.500') !important;
 }
 
 mat-sidenav-container {
@@ -16,8 +35,9 @@ mat-sidenav-container {
 
 // Move the content down so that it won't be hidden by the toolbar
 mat-sidenav {
+  background-color: theme('colors.slate.200') !important;
   padding-top: 3.5rem;
-  @media screen and (min-width: 600px) {
+  @include respond-above(xs) {
     padding-top: 4rem;
   }
 
@@ -31,8 +51,9 @@ mat-sidenav {
 
 // Move the content down so that it won't be hidden by the toolbar
 mat-sidenav-content{
+  background-color: theme('colors.slate.100') !important;
   padding-top: 3.5rem;
-  @media screen and (min-width: 600px) {
+  @include respond-above(xs) {
     padding-top: 4rem;
   }
 }

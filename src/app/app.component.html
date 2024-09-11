@@ -2,7 +2,7 @@
   <button mat-icon-button aria-label="Menu icon">
     <mat-icon>menu</mat-icon>
   </button>
-  <h1>Responsive Material Sidenavigation</h1>
+  <h1>Angular with Signals - demo</h1>
 </mat-toolbar>
 
 <mat-sidenav-container autosize>
@@ -22,10 +22,10 @@
         </span>
       </a>
 
-      <a mat-list-item [routerLink]="['/cart']">
+      <a mat-list-item [routerLink]="['/basket']">
         <span class="entry">
           <mat-icon>shopping_basket</mat-icon>
-          <span>Dashboard</span>
+          <span>Basket</span>
         </span>
       </a>
     </mat-nav-list>
@@ -52,7 +52,7 @@
     </li>
     <li class="nav-item">
       <a class="nav-link"
-         [routerLink]="['/cart']"
+         [routerLink]="['/basket']"
          routerLinkActive="active">Cart
         <span class="badge bg-primary">{{cartCount > 0 ? cartCount : ''}}</span>
       </a>

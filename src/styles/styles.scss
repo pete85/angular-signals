@@ -1,8 +1,22 @@
 @import "main";
+@import '@angular/material/prebuilt-themes/azure-blue.css';
+
+@use "config" as config;
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+body { margin: 0; font-family: 'Montserrat, sans-serif', serif; }
+
+
+
+body, button, input, textarea {
+  font-family: 'Montserrat, sans-serif', serif;
+}
+
+// Optionally, override specific Angular Material typography styles
+.mat-typography {
+  font-family: 'Montserrat, sans-serif', serif;
+}
