@@ -14,9 +14,9 @@ import {CurrencyPipe, NgIf} from "@angular/common";
 })
 export class ProductDetailsComponent implements OnInit {
   @Input() productId: number = 0;
-  errorMessage: string | undefined;
-  product: Product | undefined;
-  pageTitle: string | undefined;
+  errorMessage!: string;
+  product!: Product;
+  pageTitle!: string;
 
   ngOnInit() {
     this.errorMessage = '';
