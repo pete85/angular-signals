@@ -58,3 +58,9 @@ mat-sidenav-content{
     padding-top: 4rem;
   }
 }
+
+.mdc-button {
+  &.btn-active {
+    background-color: theme('colors.blue.500') !important;
+  }
+}
