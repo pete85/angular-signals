@@ -63,3 +63,21 @@ mat-sidenav-content{
     background-color: theme('colors.blue.500') !important;
   }
 }
+
+.snackbar-error {
+  p {
+    color: theme('colors.red.300');
+  }
+}
+
+.snackbar-info {
+  p {
+    color: theme('colors.green.200');
+  }
+}
+
+.snackbar-warning {
+  p {
+    color: theme('colors.amber.200');
+  }
+}

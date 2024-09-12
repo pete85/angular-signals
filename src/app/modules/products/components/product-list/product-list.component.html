@@ -3,22 +3,17 @@
     <h2>{{ pageTitle }}</h2>
   </div>
 
-  <div class="tw-flex tw-flex-col tw-gap-2 tw-flex-auto" *ngIf="products.length">
+  <div class="tw-flex tw-flex-col tw-gap-2 tw-flex-auto">
 
     <mat-form-field appearance="outline">
       <mat-label>Select product</mat-label>
-      <mat-select (selectionChange)="onSelected($event.value)" [disabled]="!products">
+      <mat-select (selectionChange)="onSelected($event.value)" [disabled]="!products || (products && !products.length)">
         @for (product of products; track product) {
           <mat-option [value]="product.id">{{product?.productName}}</mat-option>
         }
       </mat-select>
     </mat-form-field>
   </div>
-
-  <div class="tw-flex tw-flex-auto" *ngIf="errorMessage">
-    <h4>{{ errorMessage }}</h4>
-  </div>
-
 
   @if (selectedProductId) {
     <div class='col-md-8'>

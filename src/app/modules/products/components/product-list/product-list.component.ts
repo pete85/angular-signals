@@ -33,19 +33,19 @@ import {MatSelect} from "@angular/material/select";
   styleUrl: './product-list.component.scss'
 })
 export class ProductListComponent implements OnInit, OnDestroy {
-  errorMessage!: string;
   pageTitle!: string;
   products!: Product[];
   selectedProductId!: number;
   subProducts$!: Subscription;
   subscriptionList: Subscription = new Subscription();
 
-  constructor(private _productsService: ProductsService) {
+  constructor(
+    private _productsService: ProductsService
+  ) {
   }
 
   ngOnInit() {
     this.pageTitle = 'Products';
-    this.products = [];
     this.getProducts();
   }
 
@@ -59,10 +59,8 @@ export class ProductListComponent implements OnInit, OnDestroy {
         }
       },
       error: err => {
-        console.error('Could not retrieve products.', err);
-        this.errorMessage = 'Could not retrieve products.';
-      },
-      complete: () => {}
+        console.error(err);
+      }
     });
   }
 

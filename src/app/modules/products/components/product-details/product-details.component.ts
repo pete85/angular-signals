@@ -1,6 +1,6 @@
 import {Component, Input, OnChanges, OnDestroy, OnInit, SimpleChanges} from '@angular/core';
 import {Product} from "../../../../data/product";
-import {CurrencyPipe, NgIf} from "@angular/common";
+import {CurrencyPipe, NgForOf, NgIf} from "@angular/common";
 import {ProductsService} from "../../../../services/products/products.service";
 import {Subscription} from "rxjs";
 import {MatButton} from "@angular/material/button";
@@ -13,7 +13,8 @@ import {LoaderComponent} from "../../../../components/loader/loader.component";
     CurrencyPipe,
     NgIf,
     MatButton,
-    LoaderComponent
+    LoaderComponent,
+    NgForOf
   ],
   templateUrl: './product-details.component.html',
   styleUrl: './product-details.component.scss'

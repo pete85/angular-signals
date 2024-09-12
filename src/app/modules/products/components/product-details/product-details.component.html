@@ -4,7 +4,7 @@
 
 
 
-<div class="tw-flex tw-flex-auto tw-flex-col" *ngIf="product && !loadingProduct">
+<div class="tw-flex tw-flex-auto tw-flex-col animated fadeIn" *ngIf="product && !loadingProduct">
   <div class="tw-flex tw-flex-auto tw-mb-5">
     <h2>{{ pageTitle }}</h2>
   </div>
@@ -16,7 +16,7 @@
       <div class="tw-flex-grow-0 tw-w-[120px]">
         <h4>Name:</h4>
       </div>
-      <p>{{ product?.productName }}</p>
+      <p>{{ product.productName }}</p>
     </div>
 
     <!-- *** Product code *** -->
@@ -24,7 +24,7 @@
       <div class="tw-flex-grow-0 tw-w-[120px]">
         <h4>Code:</h4>
       </div>
-      <p>{{ product?.productCode }}</p>
+      <p>{{ product.productCode }}</p>
     </div>
 
     <!-- *** Product description *** -->
@@ -32,7 +32,7 @@
       <div class="tw-flex-grow-0 tw-w-[120px]">
         <h4>Description:</h4>
       </div>
-      <p>{{ product?.description }}</p>
+      <p>{{ product.description }}</p>
     </div>
 
     <!-- *** Product price *** -->
@@ -40,7 +40,7 @@
       <div class="tw-flex-grow-0 tw-w-[120px]">
         <h4>Price:</h4>
       </div>
-      <p>{{ product?.price | currency:"GBP":"symbol" }}</p>
+      <p>{{ product.price | currency:"GBP":"symbol" }}</p>
     </div>
 
     <!-- *** Product quantity *** -->
@@ -48,7 +48,7 @@
       <div class="tw-flex-grow-0 tw-w-[120px]">
         <h4>In Stock:</h4>
       </div>
-      <p>{{ product?.quantityInStock ?? 0 }}</p>
+      <p>{{ product.quantityInStock ?? 0 }}</p>
     </div>
 
     <div class="tw-flex tw-flex-auto tw-items-center tw-gap-3">
@@ -56,11 +56,10 @@
     </div>
   </div>
 
-  <div class="card-body">
-
-    <div class="table-responsive">
+  <div class="tw-flex tw-flex-auto tw-flex-col tw-gap-y-5 tw-mt-5">
+    <div class="tw-flex tw-flex-auto tw-items-center">
       <table class="table mb-0"
-             *ngIf="product?.reviews; else noReviews">
+             *ngIf="product.reviews; else noReviews">
         <thead>
         <tr>
           <th>Review</th>
@@ -77,18 +76,9 @@
         </tbody>
       </table>
 
-      <ng-template #noReviews> No reviews for this product</ng-template>
-
+      <ng-template #noReviews>
+        <p>No reviews for this product</p>
+      </ng-template>
     </div>
-
   </div>
-</div>
-
-<div class="card" *ngIf="errorMessage">
-  <div class="card-header">
-    Product Detail
-  </div>
-</div>
-<div class="alert alert-danger" *ngIf="errorMessage">
-  {{ errorMessage }}
 </div>
