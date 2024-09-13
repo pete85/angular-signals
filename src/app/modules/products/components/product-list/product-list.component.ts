@@ -2,7 +2,7 @@ import {Component, OnDestroy, OnInit} from '@angular/core';
 import {Product} from "../../../../data/product";
 import {ProductDetailsComponent} from "../product-details/product-details.component";
 import {NgClass, NgForOf, NgIf} from "@angular/common";
-import {Subscription} from "rxjs";
+import {catchError, EMPTY, Subscription} from "rxjs";
 import {ProductsService} from "../../../../services/products/products.service";
 import {MatButton} from "@angular/material/button";
 import {MatFormField, MatLabel} from "@angular/material/form-field";
@@ -50,7 +50,11 @@ export class ProductListComponent implements OnInit, OnDestroy {
   }
 
   getProducts() {
-    this.subProducts$ = this._productsService.getProducts().subscribe({
+    this.subProducts$ = this._productsService.getProducts().pipe(
+      catchError(err => {
+        return EMPTY;
+      })
+    ).subscribe({
       next: response => {
         this.subscriptionList.add(this.subProducts$);
         if (response) {

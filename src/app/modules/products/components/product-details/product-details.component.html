@@ -3,7 +3,6 @@
 </div>
 
 
-
 <div class="tw-flex tw-flex-auto tw-flex-col animated fadeIn" *ngIf="product && !loadingProduct">
   <div class="tw-flex tw-flex-auto tw-mb-5">
     <h2>{{ pageTitle }}</h2>
@@ -57,28 +56,15 @@
   </div>
 
   <div class="tw-flex tw-flex-auto tw-flex-col tw-gap-y-5 tw-mt-5">
-    <div class="tw-flex tw-flex-auto tw-items-center">
-      <table class="table mb-0"
-             *ngIf="product.reviews; else noReviews">
-        <thead>
-        <tr>
-          <th>Review</th>
-          <th>Username</th>
-          <th>Text</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr *ngFor="let review of product.reviews">
-          <td>{{ review.title }}</td>
-          <td>{{ review.userName }}</td>
-          <td>{{ review.text }}</td>
-        </tr>
-        </tbody>
-      </table>
 
-      <ng-template #noReviews>
-        <p>No reviews for this product</p>
-      </ng-template>
+    <div *ngIf="product.reviews; else noReviews">
+      <ng-container *ngFor="let review of reviews">
+        <app-review [review]="review"></app-review>
+      </ng-container>
     </div>
+
+    <ng-template #noReviews>
+      <p>No reviews for this product</p>
+    </ng-template>
   </div>
 </div>

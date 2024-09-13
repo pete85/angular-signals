@@ -36,7 +36,7 @@ mat-sidenav-container {
 // Move the content down so that it won't be hidden by the toolbar
 mat-sidenav {
   background-color: theme('colors.slate.200') !important;
-  padding-top: 3.5rem;
+  margin-top: 3.5rem;
   @include respond-above(xs) {
     padding-top: 4rem;
   }
@@ -49,12 +49,16 @@ mat-sidenav {
   }
 }
 
+.page-container {
+
+}
+
 // Move the content down so that it won't be hidden by the toolbar
 mat-sidenav-content{
   background-color: theme('colors.slate.100') !important;
-  padding-top: 3.5rem;
+  margin-top: 3.5rem;
   @include respond-above(xs) {
-    padding-top: 4rem;
+    margin-top: 4rem;
   }
 }
 
@@ -80,4 +84,10 @@ mat-sidenav-content{
   p {
     color: theme('colors.amber.200');
   }
+}
+
+.review-container {
+  padding: 10px 20px;
+  border: 2px solid theme('colors.slate.200');
+  border-radius: 8px;
 }

@@ -1,4 +1,7 @@
 export const environment = {
   production: false,
-  baseUrl: 'api/products',
+  baseUrls: {
+    products: 'api/products',
+    reviews: 'api/reviews',
+  },
 };
