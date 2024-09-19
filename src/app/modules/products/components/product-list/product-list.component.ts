@@ -1,5 +1,5 @@
 import {Component, inject, OnDestroy, OnInit} from '@angular/core';
-import {Product} from "../../../../data/product";
+import {Product} from "../../../../models/product";
 import {ProductDetailsComponent} from "../product-details/product-details.component";
 import {AsyncPipe, NgClass, NgForOf, NgIf} from "@angular/common";
 import {catchError, EMPTY, shareReplay, Subscription, tap} from "rxjs";

@@ -13,12 +13,12 @@ import {
   tap,
   throwError
 } from "rxjs";
-import {Product} from "../../data/product";
+import {Product} from "../../models/product";
 import {environment} from "../../../environments/environment";
 import {ProductData} from "../../data/product-data";
 import {HttpErrorService} from "../http-error/http-error.service";
 import {ReviewsService} from "../reviews/reviews.service";
-import {Review} from "../../data/review";
+import {Review} from "../../models/review";
 
 @Injectable({
   providedIn: 'root'

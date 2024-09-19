@@ -1,0 +1,27 @@
+@import "mixins";
+
+.basket-table {
+  width: 100%;
+  background: theme('colors.slate.600');
+  color: theme('colors.white');
+  border-radius: 8px;
+  overflow: hidden;
+  margin: 1em 0;
+
+  th {
+    color: theme('colors.blue.300');
+  }
+
+  td {
+    display: block;
+  }
+
+  th, td {
+    text-align: left;
+    padding: 10px;
+
+    @include respond-above(xs) {
+      display: table-cell;
+    }
+  }
+}

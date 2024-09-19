@@ -1,5 +1,5 @@
 import {Component, Input} from '@angular/core';
-import {Review} from "../../data/review";
+import {Review} from "../../models/review";
 import {NgForOf, NgIf} from "@angular/common";
 
 @Component({

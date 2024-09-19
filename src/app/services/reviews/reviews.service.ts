@@ -3,8 +3,8 @@ import {environment} from "../../../environments/environment";
 import {HttpClient, HttpErrorResponse} from "@angular/common/http";
 import {HttpErrorService} from "../http-error/http-error.service";
 import {catchError, Observable, throwError} from "rxjs";
-import {Product} from "../../data/product";
-import {Review} from "../../data/review";
+import {Product} from "../../models/product";
+import {Review} from "../../models/review";
 
 @Injectable({
   providedIn: 'root'

@@ -1,0 +1,17 @@
+<div class="tw-flex tw-flex-auto tw-flex-col">
+  <div class="tw-flex tw-flex-auto tw-w-full animated fadeIn" *ngIf="dataSource">
+    <table class="basket-table tw-w-full">
+      <tr>
+        <th>No.</th>
+        <th>Product</th>
+        <th>Qty</th>
+        <th>Price</th>
+      </tr>
+      @for (item of dataSource; track item.product.id; let index = $index) {
+        <tr class="tw-w-full">
+          <app-basket-item [basketItem]="item" [itemIndex]="index" class="tw-w-full"/>
+        </tr>
+      }
+    </table>
+  </div>
+</div>

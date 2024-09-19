@@ -1,0 +1,5 @@
+<td data-th="Product list number">{{ itemIndex + 1 }}</td>
+<td data-th="Product name">{{ item().product.productName }}</td>
+<td data-th="Product quantity">{{ item().product.quantityInStock }}</td>
+<td data-th="Product price">{{ item().product.price | currency:"GBP":"symbol" }}</td>
+

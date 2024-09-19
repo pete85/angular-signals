@@ -36,10 +36,7 @@ mat-sidenav-container {
 // Move the content down so that it won't be hidden by the toolbar
 mat-sidenav {
   background-color: theme('colors.slate.200') !important;
-  margin-top: 3.5rem;
-  @include respond-above(xs) {
-    padding-top: 4rem;
-  }
+  margin-top: 64px;
 
   .entry{
     display: flex;
@@ -53,10 +50,9 @@ mat-sidenav {
 
 }
 
-// Move the content down so that it won't be hidden by the toolbar
 mat-sidenav-content{
   background-color: theme('colors.slate.100') !important;
-  margin-top: 3.5rem;
+  margin-top: 64px;
   @include respond-above(xs) {
     margin-top: 4rem;
   }

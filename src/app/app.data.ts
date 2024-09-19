@@ -2,8 +2,8 @@ import { InMemoryDbService } from 'angular-in-memory-web-api';
 
 import { ProductData} from "./data/product-data";
 import { ReviewData} from "./data/review-data";
-import { Product} from "./data/product";
-import { Review} from "./data/review";
+import { Product} from "./models/product";
+import { Review} from "./models/review";
 
 export class AppData implements InMemoryDbService {
 

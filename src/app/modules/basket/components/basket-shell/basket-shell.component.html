@@ -1,1 +1,13 @@
-<p>cart-shell works!</p>
+<div class="basket-container tw-flex tw-flex-auto tw-flex-col tw-mb-3 tw-gap-3 animated fadeIn">
+
+  <div class="tw-flex tw-flex-auto tw-mb-5 animated fadeIn">
+    <h2>{{ pageTitle }}</h2>
+  </div>
+
+  <div class="tw-flex tw-flex-auto">
+    <app-basket-list class="tw-w-full"/>
+  </div>
+  <div class="tw-flex tw-flex-auto">
+    <app-basket-total/>
+  </div>
+</div>

@@ -1,12 +1,12 @@
 import {Component, inject, Input, OnInit, signal} from '@angular/core';
-import {Product} from "../../../../data/product";
+import {Product} from "../../../../models/product";
 import {AsyncPipe, CurrencyPipe, NgForOf, NgIf} from "@angular/common";
 import {ProductsService} from "../../../../services/products/products.service";
 import {catchError, EMPTY, finalize, map, tap} from "rxjs";
 import {MatButton} from "@angular/material/button";
 import {LoaderComponent} from "../../../../components/loader/loader.component";
 import {ReviewComponent} from "../../../../components/review/review.component";
-import {Review} from "../../../../data/review";
+import {Review} from "../../../../models/review";
 
 @Component({
   selector: 'app-product-details',
