@@ -39,7 +39,7 @@ import {BasketTotalComponent} from "../basket-total/basket-total.component";
 export class BasketListComponent {
 
   private _basketService = inject(BasketService);
-  basketItems = this._basketService.basketItems();
+  basketItems = this._basketService.basketItems;
 
   @ViewChild(MatTable) table!: MatTable<BasketItem>;
 

@@ -9,20 +9,33 @@
   overflow: hidden;
   margin: 1em 0;
 
-  th {
+  th, .mobile-table-header {
+    font: 1.2rem/1.5rem 'Montserrat', Helvetica Neue, sans-serif !important;
     color: theme('colors.blue.600');
   }
 
   td {
+    font: 1rem/1.2rem 'Montserrat', Helvetica Neue, sans-serif !important;
     display: block;
+  }
+
+  th {
+    display: none;
   }
 
   th, td {
     text-align: left;
     padding: 10px;
 
-    @include respond-above(xs) {
+    @include respond-above(sm) {
       display: table-cell;
     }
   }
+}
+
+.table-separator {
+  width: 96%;
+  margin: 10px auto;
+  height: 2px;
+  background-color: theme('colors.slate.300');
 }

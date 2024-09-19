@@ -26,7 +26,11 @@ mat-toolbar{
   position:fixed;
   top:0;
   z-index: 2;
-  background-color: theme('colors.slate.500') !important;
+  background-color: theme('colors.slate.600') !important;
+  color: theme('colors.white') !important;
+  .mat-icon {
+    color: theme('colors.white');
+  }
 }
 
 mat-sidenav-container {
@@ -36,7 +40,11 @@ mat-sidenav-container {
 // Move the content down so that it won't be hidden by the toolbar
 mat-sidenav {
   background-color: theme('colors.slate.200') !important;
-  margin-top: 64px;
+  margin-top: 56px;
+
+  @include respond-above(sm) {
+    margin-top: 64px;
+  }
 
   .entry{
     display: flex;
@@ -44,10 +52,6 @@ mat-sidenav {
     gap: 1rem;
     padding:0.75rem;
   }
-}
-
-.page-container {
-
 }
 
 mat-sidenav-content{

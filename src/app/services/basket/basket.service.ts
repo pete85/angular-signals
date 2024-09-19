@@ -35,4 +35,10 @@ export class BasketService {
     this.basketItems.update(items =>
     items.map(item => item.product.id === basketItem.product.id ? {...item, quantity} : item));
   }
+
+  removeItem(basketItem: BasketItem): void {
+    this.basketItems.update(items =>
+      items.filter(item => item.product.id !== basketItem.product.id )
+    );
+  }
 }

@@ -1,28 +1,28 @@
 <mat-toolbar color="primary">
-  <button mat-icon-button aria-label="Menu icon" (click)="drawer.toggle()">
+  <button mat-icon-button aria-label="Menu icon" (click)="drawer.toggle()" class="tw-mr-3">
     <mat-icon>menu</mat-icon>
   </button>
-  <h2>Angular with Signals - demo</h2>
+  <h3>Angular with Signals</h3>
 </mat-toolbar>
 
 <mat-sidenav-container autosize>
-  <mat-sidenav #drawer mode="side" class="navigation-bar">
+  <mat-sidenav #drawer mode="over" class="navigation-bar">
     <mat-nav-list>
-      <a mat-list-item [routerLink]="['/']">
+      <a mat-list-item (click)="drawer.close()" [routerLink]="['/']">
         <span class="entry">
           <mat-icon>house</mat-icon>
           <span>Home</span>
         </span>
       </a>
 
-      <a mat-list-item [routerLink]="['/products']">
+      <a mat-list-item (click)="drawer.close()" [routerLink]="['/products']">
         <span class="entry">
           <mat-icon>category</mat-icon>
           <span>Products</span>
         </span>
       </a>
 
-      <a mat-list-item [routerLink]="['/basket']">
+      <a mat-list-item (click)="drawer.close()" [routerLink]="['/basket']">
         <span class="entry">
           <mat-icon>shopping_basket</mat-icon>
           <span>Basket</span>
