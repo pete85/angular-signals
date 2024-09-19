@@ -2,14 +2,15 @@
 
 .basket-table {
   width: 100%;
-  background: theme('colors.slate.600');
-  color: theme('colors.white');
+  border: 2px solid theme('colors.slate.300');
+  background-color: theme('colors.slate.200');
   border-radius: 8px;
+  color: theme('colors.slate.800');
   overflow: hidden;
   margin: 1em 0;
 
   th {
-    color: theme('colors.blue.300');
+    color: theme('colors.blue.600');
   }
 
   td {

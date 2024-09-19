@@ -30,8 +30,14 @@ export class AppComponent {
 
   private _basketService = inject(BasketService);
 
+  basketCount = this._basketService.basketCount;
+  events: string[] = [];
+  menuOpen!: boolean;
   pageTitle = 'Demo Product Management';
 
-  basketCount = this._basketService.basketCount;
+
+  toggleMenu() {
+
+  }
 
 }

@@ -1,5 +1,11 @@
 <td data-th="Product list number">{{ itemIndex + 1 }}</td>
-<td data-th="Product name">{{ item().product.productName }}</td>
-<td data-th="Product quantity">{{ item().product.quantityInStock }}</td>
-<td data-th="Product price">{{ item().product.price | currency:"GBP":"symbol" }}</td>
+<td data-th="Product name">{{ basketItem.product.productName }}</td>
+<td data-th="Product quantity">
+  <mat-form-field appearance="outline">
+    <select matNativeControl required [ngModel]="basketItem.quantity" (ngModelChange)="onQuantitySelected(basketItem, $event)">
+      <option *ngFor="let qty of quantityOptions()">{{qty}}</option>
+    </select>
+  </mat-form-field>
+</td>
+<td data-th="Product price">{{ basketItem.product.price | currency:"GBP":"symbol" }}</td>
 

@@ -29,6 +29,15 @@
       </div>
     </div>
 
+    <div class="total-price tw-flex tw-flex-auto tw-pt-2 tw-gap-2">
+      <div class="tw-w-[100px]">
+        <h4>Total:</h4>
+      </div>
+      <div class="tw-flex tw-justify-end tw-w-[70px]">
+        <p>{{ totalPrice() | currency: "GBP":"symbol" }}</p>
+      </div>
+    </div>
+
     <!--    <div class="row">-->
     <!--      <div class="col-md-5">Estimated Tax:</div>-->
     <!--      <div class="col-md-4 text-end">{{tax() | currency}}</div>-->

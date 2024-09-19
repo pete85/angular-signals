@@ -14,11 +14,12 @@ import {CurrencyPipe} from "@angular/common";
 export class BasketTotalComponent {
 
   private _basketService = inject(BasketService);
+  pageTitle: string = 'Total';
 
   basketItems = this._basketService.basketItems;
   deliveryFee = this._basketService.deliveryFee;
-  pageTitle: string = 'Total';
   subTotal = this._basketService.subTotal;
   tax = this._basketService.tax;
+  totalPrice = this._basketService.totalPrice;
 
 }
