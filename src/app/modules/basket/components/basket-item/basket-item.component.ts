@@ -30,10 +30,17 @@ export class BasketItemComponent implements OnChanges {
   innerHeight!: number;
   innerWidth!: number;
   private _basketService = inject(BasketService);
-  @Input({required: true}) basketItem!: BasketItem;
-  @Input() itemIndex!: number;
   basketItems = this._basketService.basketItems();
-  quantityOptions = computed<number[]>(() => [...Array(this.basketItem.product.quantityInStock).keys()].map(x => x + 1));
+  @Input() itemIndex!: number;
+  item = signal<BasketItem>(undefined!);
+  @Input({ required: true }) set basketItem(bi: BasketItem) {
+    this.item.set(bi);
+  }
+  quantityOptions = computed<number[]>(() => [...Array(this.item().product.quantityInStock).keys()].map(x => x + 1));
+  extendedPrice = computed(() => this.item().product.price * this.item().quantity);
+
+
+
 
   @HostListener('window:resize', ['$event'])
   onResize() {
@@ -58,5 +65,4 @@ export class BasketItemComponent implements OnChanges {
   onRemoveItem(item: BasketItem) {
     this._basketService.removeItem(item);
   }
-
 }

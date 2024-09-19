@@ -1,51 +1,64 @@
-<td data-th="Product list number">
-  <div class="tw-flex tw-items-center">
-    <span *ngIf="innerWidth <= 768" class="tw-flex tw-w-[100px] tw-font-bold mobile-table-header">No.</span>
-    <div class="tw-flex tw-flex-auto max-md:tw-justify-end max-md:tw-mr-5">
-      <p>{{ itemIndex + 1 }}</p>
+<ng-container *ngIf="item() as basketItem">
+  <td data-th="Product list number">
+    <div class="tw-flex tw-items-center">
+      <span *ngIf="innerWidth <= 768" class="tw-flex tw-w-[100px] tw-font-bold mobile-table-header">No.</span>
+      <div class="tw-flex tw-flex-auto max-md:tw-justify-end max-md:tw-mr-5">
+        <p>{{ itemIndex + 1 }}</p>
+      </div>
     </div>
-  </div>
-</td>
-<td data-th="Product name">
-  <div class="tw-flex tw-items-center">
-    <span *ngIf="innerWidth <= 768" class="tw-flex tw-w-[100px] tw-font-bold mobile-table-header">Product</span>
-    <div class="tw-flex tw-flex-auto max-md:tw-justify-end max-md:tw-mr-5">
-      <p>{{ basketItem.product.productName }}</p>
+  </td>
+  <td data-th="Product name">
+    <div class="tw-flex tw-items-center">
+      <span *ngIf="innerWidth <= 768" class="tw-flex tw-w-[100px] tw-font-bold mobile-table-header">Product</span>
+      <div class="tw-flex tw-flex-auto max-md:tw-justify-end max-md:tw-mr-5">
+        <p>{{ basketItem.product.productName }}</p>
+      </div>
     </div>
-  </div>
-</td>
-<td data-th="Product quantity">
-  <div class="tw-flex tw-items-center">
-    <span *ngIf="innerWidth <= 768" class="tw-flex tw-w-[100px] tw-font-bold mobile-table-header">Qty</span>
-    <div class="tw-flex tw-flex-auto max-md:tw-justify-end max-md:tw-mr-5">
-      <mat-form-field appearance="outline" class="tw-w-[100px]">
-        <select matNativeControl required [ngModel]="basketItem.quantity"
-                (ngModelChange)="onQuantitySelected(basketItem, $event)">
-          <option *ngFor="let qty of quantityOptions()">{{ qty }}</option>
-        </select>
-      </mat-form-field>
+  </td>
+  <td data-th="Product price">
+    <div class="tw-flex tw-items-center">
+      <span *ngIf="innerWidth <= 768" class="tw-flex tw-w-[100px] tw-font-bold mobile-table-header">Price</span>
+      <div class="tw-flex tw-flex-auto max-md:tw-justify-end max-md:tw-mr-5">
+        <p>{{ basketItem.product.price | currency:"GBP":"symbol" }}</p>
+      </div>
     </div>
-  </div>
-</td>
-<td data-th="Product price">
-  <div class="tw-flex tw-items-center">
-    <span *ngIf="innerWidth <= 768" class="tw-flex tw-w-[100px] tw-font-bold mobile-table-header">Price</span>
-    <div class="tw-flex tw-flex-auto max-md:tw-justify-end max-md:tw-mr-5">
-      <p>{{ basketItem.product.price | currency:"GBP":"symbol" }}</p>
+  </td>
+  <td data-th="Product quantity">
+    <div class="tw-flex tw-items-center">
+      <span *ngIf="innerWidth <= 768" class="tw-flex tw-w-[100px] tw-font-bold mobile-table-header">Qty</span>
+      <div class="tw-flex tw-flex-auto max-md:tw-justify-end max-md:tw-mr-5">
+        <mat-form-field appearance="outline" class="tw-w-[100px]">
+          <select matNativeControl required [ngModel]="basketItem.quantity"
+                  (ngModelChange)="onQuantitySelected(basketItem, $event)">
+            <option *ngFor="let qty of quantityOptions()">{{ qty }}</option>
+          </select>
+        </mat-form-field>
+      </div>
     </div>
-  </div>
-</td>
-<td data-th="Product delete" class="tw-flex tw-justify-end tw-items-end">
-  <div class="tw-flex tw-items-center">
-    <span *ngIf="innerWidth <= 768" class="tw-flex tw-w-[100px] tw-font-bold mobile-table-header"></span>
-    <div class="tw-flex tw-flex-auto tw-justify-end tw-mr-5">
-      <button mat-mini-fab color="accent" (click)="onRemoveItem(basketItem)">
-        <mat-icon>delete</mat-icon>
-      </button>
-    </div>
-  </div>
-</td>
+  </td>
 
-<div *ngIf="innerWidth <= 768 && itemIndex < basketItems.length - 1" class="tw-flex tw-flex-auto table-separator">
-</div>
+  <td data-th="Product extended price">
+    <div class="tw-flex tw-items-center">
+      <span *ngIf="innerWidth <= 768" class="tw-flex tw-w-[100px] tw-font-bold mobile-table-header">Price</span>
+      <div class="tw-flex tw-flex-auto max-md:tw-justify-end max-md:tw-mr-5">
+        <p>{{ extendedPrice() | currency:"GBP":"symbol" }}</p>
+      </div>
+    </div>
+  </td>
 
+  <td data-th="Product delete" class="tw-flex tw-justify-end tw-items-end">
+    <div class="tw-flex tw-items-center">
+      <span *ngIf="innerWidth <= 768" class="tw-flex tw-w-[100px] tw-font-bold mobile-table-header"></span>
+      <div class="tw-flex tw-flex-auto tw-justify-end tw-mr-5">
+        <button mat-mini-fab color="accent" (click)="onRemoveItem(basketItem)">
+          <mat-icon>delete</mat-icon>
+        </button>
+      </div>
+    </div>
+  </td>
+
+  <div *ngIf="innerWidth <= 768 && itemIndex < basketItems.length - 1" class="tw-flex tw-flex-auto table-separator">
+  </div>
+
+
+</ng-container>
