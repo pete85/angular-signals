@@ -1,1 +1,42 @@
-<p>basket-total works!</p>
+<div class="basket-total tw-flex tw-flex-auto tw-flex-col">
+  <div class="tw-flex tw-flex-auto tw-mb-5">
+    <h3>{{ pageTitle }}</h3>
+  </div>
+
+  <div class="tw-flex tw-flex-auto tw-flex-col tw-gap-2">
+    <div class="tw-flex tw-flex-auto tw-gap-2">
+      <div class="tw-w-[100px]">
+        <h4>Subtotal:</h4>
+      </div>
+      <div class="tw-flex tw-justify-end tw-w-[70px]">
+        <p>{{ subTotal() | currency: "GBP":"symbol" }}</p>
+      </div>
+    </div>
+    <div class="tw-flex tw-flex-auto tw-gap-2">
+      <div class="tw-w-[100px]">
+        <h4>Delivery:</h4>
+      </div>
+      <div class="tw-flex tw-justify-end tw-w-[70px]">
+        <p>{{ deliveryFee() | currency: "GBP":"symbol" }}</p>
+      </div>
+    </div>
+    <div class="tw-flex tw-flex-auto tw-gap-2">
+      <div class="tw-w-[100px]">
+        <h4>Tax:</h4>
+      </div>
+      <div class="tw-flex tw-justify-end tw-w-[70px]">
+        <p>{{ tax() | currency: "GBP":"symbol" }}</p>
+      </div>
+    </div>
+
+    <!--    <div class="row">-->
+    <!--      <div class="col-md-5">Estimated Tax:</div>-->
+    <!--      <div class="col-md-4 text-end">{{tax() | currency}}</div>-->
+    <!--    </div>-->
+
+    <!--    <div class="row">-->
+    <!--      <div class="col-md-5"><b>Total:</b></div>-->
+    <!--      <div class="col-md-4 text-end"><b>{{totalPrice() | currency}}</b></div>-->
+    <!--    </div>-->
+  </div>
+</div>

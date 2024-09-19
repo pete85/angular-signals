@@ -12,6 +12,7 @@ import {
 } from "@angular/material/table";
 import {CurrencyPipe, NgIf} from "@angular/common";
 import {BasketItemComponent} from "../basket-item/basket-item.component";
+import {BasketTotalComponent} from "../basket-total/basket-total.component";
 
 @Component({
   selector: 'app-basket-list',
@@ -29,7 +30,8 @@ import {BasketItemComponent} from "../basket-item/basket-item.component";
     MatHeaderRowDef,
     MatHeaderCellDef,
     CurrencyPipe,
-    BasketItemComponent
+    BasketItemComponent,
+    BasketTotalComponent
   ],
   templateUrl: './basket-list.component.html',
   styleUrl: './basket-list.component.scss'
@@ -37,36 +39,7 @@ import {BasketItemComponent} from "../basket-item/basket-item.component";
 export class BasketListComponent {
 
   private _basketService = inject(BasketService);
-  basketItems: BasketItem[] = this._basketService.basketItems();
-  // dataSource = [...this.basketItems];
-  dataSource: BasketItem[] = [
-    {
-      product: {
-        id: 1,
-        productName: 'Leaf Rake',
-        productCode: 'GDN-0011',
-        description: 'Leaf rake with 48-inch wooden handle',
-        price: 19.95,
-        quantityInStock: 15,
-        hasReviews: true
-      },
-      quantity: 2
-    },
-    {
-      product: {
-        id: 2,
-        productName: 'Garden Cart',
-        productCode: 'GDN-0023',
-        description: '15 gallon capacity rolling garden cart',
-        price: 32.99,
-        quantityInStock: 2,
-        hasReviews: true
-      },
-      quantity: 5
-    }
-
-  ];
-  displayedColumns: string[] = ['position', 'product', 'price', 'quantity'];
+  basketItems = this._basketService.basketItems();
 
   @ViewChild(MatTable) table!: MatTable<BasketItem>;
 

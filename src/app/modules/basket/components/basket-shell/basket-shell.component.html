@@ -7,7 +7,7 @@
   <div class="tw-flex tw-flex-auto">
     <app-basket-list class="tw-w-full"/>
   </div>
-  <div class="tw-flex tw-flex-auto">
+  <div class="tw-flex tw-flex-auto" *ngIf="basketItems() && basketItems().length">
     <app-basket-total/>
   </div>
 </div>

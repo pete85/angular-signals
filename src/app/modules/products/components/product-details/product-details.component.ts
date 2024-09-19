@@ -7,6 +7,7 @@ import {MatButton} from "@angular/material/button";
 import {LoaderComponent} from "../../../../components/loader/loader.component";
 import {ReviewComponent} from "../../../../components/review/review.component";
 import {Review} from "../../../../models/review";
+import {BasketService} from "../../../../services/basket/basket.service";
 
 @Component({
   selector: 'app-product-details',
@@ -29,6 +30,7 @@ export class ProductDetailsComponent {
   pageTitle: string = 'Product details';
 
   private _productsService = inject(ProductsService);
+  private _basketService = inject(BasketService);
 
   readonly product$ = this._productsService.product$.pipe(
     // tap(product => {
@@ -45,5 +47,6 @@ export class ProductDetailsComponent {
   );
 
   addToBasket(product: Product) {
+    this._basketService.addToBasket(product);
   }
 }
