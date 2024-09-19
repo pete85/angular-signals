@@ -1,9 +1,11 @@
-<div class="tw-flex tw-flex-auto tw-justify-center tw-items-center tw-min-h-[200px]" *ngIf="loadingProduct">
-  <app-loader></app-loader>
-</div>
+<!--<ng-template #loading>-->
+<!--  <div class="tw-flex tw-flex-auto tw-justify-center tw-items-center tw-min-h-[200px]">-->
+<!--    <app-loader></app-loader>-->
+<!--  </div>-->
+<!--</ng-template>-->
 
 
-<div class="tw-flex tw-flex-auto tw-flex-col animated fadeIn" *ngIf="product && !loadingProduct">
+<div class="tw-flex tw-flex-auto tw-flex-col animated fadeIn" *ngIf="product$ | async as product">
   <div class="tw-flex tw-flex-auto tw-mb-5">
     <h2>{{ pageTitle }}</h2>
   </div>
@@ -58,7 +60,7 @@
   <div class="tw-flex tw-flex-auto tw-flex-col tw-gap-y-5 tw-mt-5">
 
     <div *ngIf="product.reviews; else noReviews">
-      <ng-container *ngFor="let review of reviews">
+      <ng-container *ngFor="let review of product.reviews">
         <app-review [review]="review"></app-review>
       </ng-container>
     </div>

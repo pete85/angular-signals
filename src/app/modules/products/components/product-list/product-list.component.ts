@@ -1,8 +1,8 @@
-import {Component, OnDestroy, OnInit} from '@angular/core';
+import {Component, inject, OnDestroy, OnInit} from '@angular/core';
 import {Product} from "../../../../data/product";
 import {ProductDetailsComponent} from "../product-details/product-details.component";
-import {NgClass, NgForOf, NgIf} from "@angular/common";
-import {catchError, EMPTY, Subscription} from "rxjs";
+import {AsyncPipe, NgClass, NgForOf, NgIf} from "@angular/common";
+import {catchError, EMPTY, shareReplay, Subscription, tap} from "rxjs";
 import {ProductsService} from "../../../../services/products/products.service";
 import {MatButton} from "@angular/material/button";
 import {MatFormField, MatLabel} from "@angular/material/form-field";
@@ -10,6 +10,7 @@ import {ReactiveFormsModule} from "@angular/forms";
 import {MatAutocomplete, MatAutocompleteTrigger, MatOption} from "@angular/material/autocomplete";
 import {MatInput} from "@angular/material/input";
 import {MatSelect} from "@angular/material/select";
+import {LoaderComponent} from "../../../../components/loader/loader.component";
 
 @Component({
   selector: 'app-product-list',
@@ -27,53 +28,27 @@ import {MatSelect} from "@angular/material/select";
     MatOption,
     MatInput,
     MatLabel,
-    MatSelect
+    MatSelect,
+    AsyncPipe,
+    LoaderComponent
   ],
   templateUrl: './product-list.component.html',
   styleUrl: './product-list.component.scss'
 })
-export class ProductListComponent implements OnInit, OnDestroy {
-  pageTitle!: string;
+export class ProductListComponent {
+  pageTitle: string = 'Products';
   products!: Product[];
-  selectedProductId!: number;
-  subProducts$!: Subscription;
-  subscriptionList: Subscription = new Subscription();
+  private _productsService = inject(ProductsService);
 
-  constructor(
-    private _productsService: ProductsService
-  ) {
-  }
+  readonly selectedProductId$ = this._productsService.productSelected$;
 
-  ngOnInit() {
-    this.pageTitle = 'Products';
-    this.getProducts();
-  }
-
-  getProducts() {
-    this.subProducts$ = this._productsService.getProducts().pipe(
-      catchError(err => {
-        return EMPTY;
-      })
-    ).subscribe({
-      next: response => {
-        this.subscriptionList.add(this.subProducts$);
-        if (response) {
-          console.log('RES: ', response);
-          this.products = response;
-        }
-      },
-      error: err => {
-        console.error(err);
-      }
-    });
-  }
+  readonly products$ = this._productsService.products$.pipe(
+    catchError(err => {
+      return EMPTY;
+    })
+  );
 
   onSelected(productId: number): void {
-    this.selectedProductId = productId;
-    console.log('selected', this.selectedProductId);
-  }
-
-  ngOnDestroy() {
-    this.subscriptionList.unsubscribe();
+    this._productsService.productSelected(productId);
   }
 }

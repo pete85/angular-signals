@@ -3,21 +3,25 @@
     <h2>{{ pageTitle }}</h2>
   </div>
 
-  <div class="tw-flex tw-flex-col tw-gap-2 tw-flex-auto">
+  <div class="tw-flex tw-flex-col tw-gap-2 tw-flex-auto" *ngIf="products$ | async as products">
 
     <mat-form-field appearance="outline">
       <mat-label>Select product</mat-label>
       <mat-select (selectionChange)="onSelected($event.value)" [disabled]="!products || (products && !products.length)">
         @for (product of products; track product) {
-          <mat-option [value]="product.id">{{product?.productName}}</mat-option>
+          <mat-option [value]="product.id">{{ product?.productName }}</mat-option>
         }
       </mat-select>
     </mat-form-field>
   </div>
 
-  @if (selectedProductId) {
-    <div class='col-md-8'>
-      <app-product-details [productId]="selectedProductId"/>
-    </div>
-  }
+  <div class="tw-flex">
+    <app-product-details/>
+  </div>
+
+<!--  <ng-template #loading>-->
+<!--    <div class="tw-flex tw-flex-auto tw-justify-center tw-items-center tw-min-h-[200px]">-->
+<!--      <app-loader></app-loader>-->
+<!--    </div>-->
+<!--  </ng-template>-->
 </div>
