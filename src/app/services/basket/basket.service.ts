@@ -28,7 +28,22 @@ export class BasketService {
   subTotalEffect = effect(() => console.log('sub total: ', this.subTotal()));
 
   addToBasket(product: Product): void {
-    this.basketItems.update(items => [...items, {product, quantity: 1}]);
+
+    const index = this.basketItems().findIndex(item =>
+      item.product.id === product.id);
+
+    if (index === -1) {
+      this.basketItems.update(items => [...items, { product, quantity: 1 }]);
+    } else {
+      this.basketItems.update(items =>
+        [
+          ...items.slice(0, index),
+          { ...items[index], quantity: items[index].quantity + 1 },
+          ...items.slice(index + 1)
+        ]);
+    }
+
+    // this.basketItems.update(items => [...items, {product, quantity: 1}]);
   }
 
   updateQuantity(basketItem: BasketItem, quantity: number): void {

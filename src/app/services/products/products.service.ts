@@ -15,7 +15,6 @@ import {
 } from "rxjs";
 import {Product} from "../../models/product";
 import {environment} from "../../../environments/environment";
-import {ProductData} from "../../data/product-data";
 import {HttpErrorService} from "../http-error/http-error.service";
 import {ReviewsService} from "../reviews/reviews.service";
 import {Review} from "../../models/review";
@@ -42,17 +41,6 @@ export class ProductsService {
     shareReplay(1),
     catchError(err => this.handleError(err))
   );
-
-  readonly product1$ = this.productSelected$
-    .pipe(
-      filter(Boolean),
-      switchMap(id => {
-        return this._http.get<Product>(`${this.baseUrl}/${id}`).pipe(
-          switchMap(product => this.getProductWithReviews(product)),
-          catchError(err => this.handleError(err))
-        );
-      })
-    );
 
   readonly product$ = combineLatest([
     this.productSelected$,
