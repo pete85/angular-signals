@@ -2,23 +2,23 @@
 @import "variables";
 
 h1 {
-  font: 3rem/3rem 'Bebas Neue', Helvetica Neue, sans-serif !important;
+  font: 3rem/4rem 'Bebas Neue', Helvetica Neue, sans-serif !important;
 }
 
 h2 {
-  font: 2rem/2.2rem 'Montserrat', Helvetica Neue, sans-serif !important;
+  font: 2rem/3rem 'Montserrat', Helvetica Neue, sans-serif !important;
 }
 
 h3 {
-  font: 1.5rem/1.5rem 'Montserrat', Helvetica Neue, sans-serif !important;
+  font: 1.5rem/2.5rem 'Montserrat', Helvetica Neue, sans-serif !important;
 }
 
 h4 {
-  font: 600 1rem/1.2rem 'Montserrat', Helvetica Neue, sans-serif !important;
+  font: 600 1rem/2rem 'Montserrat', Helvetica Neue, sans-serif !important;
 }
 
 p {
-  font: 400 1rem/1.2rem 'Montserrat', Helvetica Neue, sans-serif;
+  font: 400 1rem/2rem 'Montserrat', Helvetica Neue, sans-serif;
   margin: 0;
 }
 
@@ -92,7 +92,7 @@ mat-sidenav-content{
   border-radius: 8px;
 }
 
-.basket-total, .product-details {
+.basket-total, .product-details, .project-description {
   padding: 20px 40px;
   border: 2px solid theme('colors.slate.300');
   background-color: theme('colors.slate.200');
