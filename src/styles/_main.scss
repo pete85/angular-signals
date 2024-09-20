@@ -99,6 +99,25 @@ mat-sidenav-content{
   border-radius: 8px;
 }
 
+.btn-with-image {
+  .mdc-button__label {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+  }
+  img {
+    max-height: 26px;
+    margin-left: 10px;
+  }
+}
+
+//.project-description {
+//  img {
+//    width: 200px;
+//    height: 200px;
+//  }
+//}
+
 .total-price {
   border-top: 2px solid theme('colors.slate.300');
 }
