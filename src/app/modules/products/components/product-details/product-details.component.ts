@@ -1,12 +1,10 @@
-import {Component, computed, effect, inject, Input, OnInit, signal} from '@angular/core';
+import {Component, computed, inject} from '@angular/core';
 import {Product} from "../../../../models/product";
 import {AsyncPipe, CurrencyPipe, NgForOf, NgIf} from "@angular/common";
 import {ProductsService} from "../../../../services/products/products.service";
-import {catchError, EMPTY, finalize, map, tap} from "rxjs";
 import {MatButton} from "@angular/material/button";
 import {LoaderComponent} from "../../../../components/loader/loader.component";
 import {ReviewComponent} from "../../../../components/review/review.component";
-import {Review} from "../../../../models/review";
 import {BasketService} from "../../../../services/basket/basket.service";
 
 @Component({

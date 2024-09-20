@@ -1,4 +1,4 @@
-import {Component, inject, OnDestroy, OnInit} from '@angular/core';
+import {Component, inject, OnDestroy, OnInit, signal} from '@angular/core';
 import {Product} from "../../../../models/product";
 import {ProductDetailsComponent} from "../product-details/product-details.component";
 import {AsyncPipe, NgClass, NgForOf, NgIf} from "@angular/common";
@@ -38,6 +38,7 @@ import {LoaderComponent} from "../../../../components/loader/loader.component";
 export class ProductListComponent {
   pageTitle: string = 'Products';
   private _productsService = inject(ProductsService);
+  loadingProduct = signal<boolean>(false);
 
   products = this._productsService.products;
   errorMessage = this._productsService.productsError;
@@ -47,5 +48,6 @@ export class ProductListComponent {
 
   onSelected(productId: number): void {
     this._productsService.productSelected(productId);
+    this.loadingProduct.set(!this.selectedProductId());
   }
 }

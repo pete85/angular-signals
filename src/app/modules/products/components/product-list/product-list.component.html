@@ -13,15 +13,18 @@
         }
       </mat-select>
     </mat-form-field>
+
+    <div class="tw-flex tw-flex-auto tw-justify-center tw-items-center tw-min-h-[200px]"
+         *ngIf="!products || (products && !products.length)">
+      <app-loader></app-loader>
+    </div>
   </div>
 
   <div class="tw-flex tw-mt-5">
-    <app-product-details class="tw-w-full"/>
+    <div class="tw-flex tw-flex-auto tw-justify-center tw-items-center tw-min-h-[200px]"
+         *ngIf="loadingProduct()">
+      <app-loader></app-loader>
+    </div>
+    <app-product-details class="tw-w-full" *ngIf="!loadingProduct()"/>
   </div>
-
-<!--  <ng-template #loading>-->
-<!--    <div class="tw-flex tw-flex-auto tw-justify-center tw-items-center tw-min-h-[200px]">-->
-<!--      <app-loader></app-loader>-->
-<!--    </div>-->
-<!--  </ng-template>-->
 </div>
