@@ -3,7 +3,7 @@
     <h2>{{ pageTitle }}</h2>
   </div>
 
-  <div class="tw-flex tw-flex-col tw-gap-2 tw-flex-auto" *ngIf="products$ | async as products">
+  <div class="tw-flex tw-flex-col tw-gap-2 tw-flex-auto" *ngIf="products() as products">
 
     <mat-form-field appearance="outline">
       <mat-label>Select product</mat-label>
@@ -15,8 +15,8 @@
     </mat-form-field>
   </div>
 
-  <div class="tw-flex">
-    <app-product-details/>
+  <div class="tw-flex tw-mt-5">
+    <app-product-details class="tw-w-full"/>
   </div>
 
 <!--  <ng-template #loading>-->

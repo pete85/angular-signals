@@ -37,16 +37,13 @@ import {LoaderComponent} from "../../../../components/loader/loader.component";
 })
 export class ProductListComponent {
   pageTitle: string = 'Products';
-  products!: Product[];
   private _productsService = inject(ProductsService);
 
+  products = this._productsService.products;
+  errorMessage = this._productsService.productsError;
   readonly selectedProductId$ = this._productsService.productSelected$;
 
-  readonly products$ = this._productsService.products$.pipe(
-    catchError(err => {
-      return EMPTY;
-    })
-  );
+
 
   onSelected(productId: number): void {
     this._productsService.productSelected(productId);
