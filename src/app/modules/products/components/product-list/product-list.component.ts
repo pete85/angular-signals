@@ -41,7 +41,7 @@ export class ProductListComponent {
 
   products = this._productsService.products;
   errorMessage = this._productsService.productsError;
-  readonly selectedProductId$ = this._productsService.productSelected$;
+  selectedProductId = this._productsService.selectedProductId;
 
 
 

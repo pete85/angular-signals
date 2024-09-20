@@ -1,6 +1,6 @@
-<div class="tw-flex tw-flex-auto tw-flex-col animated fadeIn" *ngIf="product$ | async as product">
+<div class="tw-flex tw-flex-auto tw-flex-col animated fadeIn" *ngIf="product() as product">
   <div class="tw-flex tw-flex-auto tw-mb-5">
-    <h2>{{ pageTitle }}</h2>
+    <h2>{{ pageTitle() }}</h2>
   </div>
 
   <div class="product-details tw-flex tw-flex-auto tw-flex-col tw-gap-y-5 tw-p-5">
@@ -42,11 +42,13 @@
       <div class="tw-flex-grow-0 tw-w-[120px]">
         <h4>In Stock:</h4>
       </div>
-      <p>{{ product.quantityInStock ?? 0 }}</p>
+      <p>{{ qtyLeft() ?? 0}}</p>
     </div>
 
     <div class="tw-flex tw-flex-auto tw-items-center tw-gap-3">
-      <button mat-flat-button color="primary" (click)="addToBasket(product)">Add to Basket</button>
+      <button mat-flat-button color="primary" (click)="addToBasket(product)" [disabled]="qtyLeft() === 0">Add to
+        Basket
+      </button>
     </div>
   </div>
 

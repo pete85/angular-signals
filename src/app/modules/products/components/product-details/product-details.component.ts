@@ -1,4 +1,4 @@
-import {Component, inject, Input, OnInit, signal} from '@angular/core';
+import {Component, computed, effect, inject, Input, OnInit, signal} from '@angular/core';
 import {Product} from "../../../../models/product";
 import {AsyncPipe, CurrencyPipe, NgForOf, NgIf} from "@angular/common";
 import {ProductsService} from "../../../../services/products/products.service";
@@ -26,25 +26,22 @@ import {BasketService} from "../../../../services/basket/basket.service";
 })
 export class ProductDetailsComponent {
   loadingProduct!: boolean;
-  product!: Product;
-  pageTitle: string = 'Product details';
 
   private _productsService = inject(ProductsService);
   private _basketService = inject(BasketService);
 
-  readonly product$ = this._productsService.product$.pipe(
-    // tap(product => {
-    //   this.pageTitle = product ? `Product Detail for: ${product.productName}` : 'Product Detail';
-    // }),
-    catchError(err => {
-      this.loadingProduct = false;
-      console.error('Could not retrieve product: ', err.message);
-      return EMPTY;
-    }),
-    finalize(() => {
-      this.loadingProduct = false;
-    })
-  );
+  product = this._productsService.product;
+  errorMessage = this._productsService.productError;
+  pageTitle = computed(() => this.product() ? `${this.product()?.productName}` : 'Products');
+  productQty = computed(() => this.product()?.quantityInStock ?? 0);
+  basketItems = this._basketService.basketItems;
+
+  qtyLeft = computed(() => {
+    const selectedItem = this.basketItems().find(item => item.product.id === this.product()?.id);
+    const productQtyValue = this.productQty() ?? 0;
+    const selectedItemQty = selectedItem?.quantity ?? 0;
+    return productQtyValue - selectedItemQty;
+  });
 
   addToBasket(product: Product) {
     this._basketService.addToBasket(product);
